@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/chat"
+    tools:context=".ui.chat.view.ChatScreenActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/chat_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/chat_message_layout"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@id/chat_message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@id/chat_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:hint="@string/enter_a_message"
+            android:inputType="textShortMessage"
+            android:lines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/black" />
+
+        <ImageButton
+            android:id="@id/chat_send_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="false"
+            android:background="@color/chat"
+            android:src="@android:drawable/ic_menu_send"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+</RelativeLayout>

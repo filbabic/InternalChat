@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/salmon">
+
+    <ImageView
+        android:id="@id/cobe_logo_image_view"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_gravity="center"
+        android:src="@drawable/cobe_logo"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@id/choose_your_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:gravity="center"
+        android:text="@string/choose_your_account_details_and_make_sure_to_write_them_down"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@id/enter_your_email_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="@string/e_mail_address"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@id/reg_email_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="@string/e_g_firebase_admin_admin_com"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/white" />
+
+    <TextView
+        android:id="@id/enter_your_password_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:text="@string/password"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@id/reg_password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/e_g_password12345"
+        android:inputType="textPassword"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5sp"
+        android:text="@string/continue_with_register" />
+
+    <ProgressBar
+        android:id="@id/progress_bar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/white"
+        android:indeterminateTintMode="src_in"
+        android:visibility="gone"
+        tools:ignore="UnusedAttribute" />
+</LinearLayout>

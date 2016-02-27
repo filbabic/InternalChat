@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp"
+    android:background="@color/salmon">
+
+    <ImageView
+        android:id="@id/cobe_logo_image_view"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_gravity="center"
+        android:src="@drawable/cobe_logo"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@id/enter_your_username_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:gravity="center"
+        android:text="@string/choose_an_awesome_user_by_which_we_will_recognize_you"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@id/reg_username_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="@string/e_g_username"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@id/continue_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/continue_with_register" />
+</LinearLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Student Chat</string>
+    <string name="log_in">Log in</string>
+    <string name="e_g_firebase_admin_admin_com">e.g. firebase_admin@admin.com</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="e_g_password12345">e.g. password12345</string>
+    <string name="register">Register</string>
+    <string name="e_mail_address">E-mail address:</string>
+    <string name="e_g_username">e.g. username</string>
+    <string name="enter_a_message">Enter a message.</string>
+    <string name="on_failure_message">Request failed!</string>
+    <string name="log_into_chat_service">Log into chat service</string>
+    <string name="create_a_new_user">Create a new user</string>
+    <string name="choose_an_entry_option">Choose an entry option.</string>
+    <string name="online_users">Online users</string>
+    <string name="current_online_users_by_username">Current online users by username:</string>
+    <string name="continue_with_register">Continue</string>
+    <string name="choose_an_emoji_to_represent_your_avatar">Choose an emoji to represent your avatar</string>
+    <string name="register_failure">Request failure :S Check if your e-mail is valid.</string>
+    <string name="register_success">Registration successful!</string>
+    <string name="choose_an_awesome_user_by_which_we_will_recognize_you">Choose an awesome username by which we will recognize you!</string>
+    <string name="choose_your_account_details_and_make_sure_to_write_them_down">Choose your account details, and make sure to write them down!</string>
+    <string name="username_taken">Username already taken!</string>
+</resources>
