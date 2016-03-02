@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16sp"
-    android:background="@color/salmon">
+    android:padding="16sp">
 
     <ImageView
         android:id="@id/cobe_logo_image_view"
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
         android:gravity="center"
-        android:text="@string/choose_an_awesome_user_by_which_we_will_recognize_you"
+        android:text="@string/choose_an_awesome_user_by_which_we_will_recognize_you_text_view"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -30,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="@string/e_g_username"
+        android:hint="@string/username_hint"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/white" />
 
@@ -40,5 +39,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="@string/continue_with_register" />
+        android:text="@string/continue_with_register_button" />
 </LinearLayout>

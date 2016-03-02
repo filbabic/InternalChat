@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
 import com.example.filip.internalchat.model.Message;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class CustomMessageRecyclerAdapter extends RecyclerView.Adapter<CustomMessageRecyclerAdapter.ViewHolder> implements MessageAdapterView {
     private final ArrayList<Message> mMessageList = new ArrayList<>();
     private final String user;
-    private final MessagePresenterImpl presenter;
+    private final MessagePresenter presenter;
 
     public CustomMessageRecyclerAdapter(String username) {
         this.user = username;
@@ -34,7 +35,7 @@ public class CustomMessageRecyclerAdapter extends RecyclerView.Adapter<CustomMes
     public void onBindViewHolder(ViewHolder holder, int position) {
         Message current = mMessageList.get(position);
         if (current.getAuthor().equals(user)) {
-            holder.mAuthorTextView.setText("You");
+            holder.mAuthorTextView.setText(StringConstants.USER_TEXT_VIEW_CHAT);
         } else {
             holder.mAuthorTextView.setText(current.getAuthor());
         }
@@ -48,14 +49,14 @@ public class CustomMessageRecyclerAdapter extends RecyclerView.Adapter<CustomMes
     }
 
     @Override
-    public void addItem(Message message) {
+    public void addMessageToAdapter(Message message) {
         mMessageList.add(message);
         notifyDataSetChanged();
     }
 
     @Override
-    public void request() {
-        presenter.requestMessages();
+    public void requestMessagesFromFirebase() {
+        presenter.requestMessagesFromFirebase();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,9 +66,9 @@ public class CustomMessageRecyclerAdapter extends RecyclerView.Adapter<CustomMes
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mAuthorTextView = (TextView) itemView.findViewById(R.id.message_author);
-            mMessageTextView = (TextView) itemView.findViewById(R.id.message_value);
-            mEmojiTextView = (TextView) itemView.findViewById(R.id.message_emoji);
+            mAuthorTextView = (TextView) itemView.findViewById(R.id.message_author_text_view);
+            mMessageTextView = (TextView) itemView.findViewById(R.id.message_value_text_view);
+            mEmojiTextView = (TextView) itemView.findViewById(R.id.message_emoji_text_view);
         }
     }
 }

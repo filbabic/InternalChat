@@ -5,7 +5,10 @@ package com.example.filip.internalchat.ui.login.view;
  */
 public interface LoginView {
     void logTheUserIn(String username, String uid, String emoji);
+
     void onFailure();
+
     void spinProgressBar();
+
     void stopProgressBar();
 }

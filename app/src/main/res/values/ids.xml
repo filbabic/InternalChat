@@ -16,9 +16,9 @@
     <item name="login_button" type="id" />
     <item name="register_button" type="id" />
     <item name="continue_button" type="id" />
-    <item name="choose_your_details" type="id" />
+    <item name="choose_your_details_text_view" type="id" />
     <item name="cobe_logo_image_view" type="id" />
-    <item name="choose_an_option" type="id" />
+    <item name="choose_an_option_text_view" type="id" />
     <item name="current_number_of_users_text_view" type="id" />
     <item name="progress_bar" type="id" />
 
@@ -27,9 +27,9 @@
     <item name="chat_send_button" type="id" />
     <item name="chat_recycler_view" type="id" />
 
-    <item name="message_author" type="id" />
-    <item name="message_value" type="id" />
-    <item name="message_emoji" type="id" />
+    <item name="message_author_text_view" type="id" />
+    <item name="message_value_text_view" type="id" />
+    <item name="message_emoji_text_view" type="id" />
 
     <item name="user_item_text_view" type="id" />
     <item name="online_user_recycler_view" type="id" />

@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/salmon">
+    android:padding="16dp">
 
     <ImageView
         android:id="@id/cobe_logo_image_view"
@@ -16,12 +15,12 @@
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@id/choose_your_details"
+        android:id="@id/choose_your_details_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10sp"
         android:gravity="center"
-        android:text="@string/choose_your_account_details_and_make_sure_to_write_them_down"
+        android:text="@string/choose_your_account_details_and_make_sure_to_write_them_down_text_view"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -30,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:text="@string/e_mail_address"
+        android:text="@string/e_mail_address_text_view"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -39,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="@string/e_g_firebase_admin_admin_com"
+        android:hint="@string/email_hint"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/white" />
 
@@ -48,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        android:text="@string/password"
+        android:text="@string/password_text_view"
         android:textColor="@color/white"
         android:textSize="20sp" />
 
@@ -56,7 +55,7 @@
         android:id="@id/reg_password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/e_g_password12345"
+        android:hint="@string/password_hint"
         android:inputType="textPassword"
         android:textColorHint="@color/white" />
 
@@ -66,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="5sp"
-        android:text="@string/continue_with_register" />
+        android:text="@string/continue_with_register_button" />
 
     <ProgressBar
         android:id="@id/progress_bar"

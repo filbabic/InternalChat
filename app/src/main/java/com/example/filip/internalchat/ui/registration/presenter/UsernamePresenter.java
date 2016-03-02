@@ -5,6 +5,6 @@ package com.example.filip.internalchat.ui.registration.presenter;
  */
 public interface UsernamePresenter {
     void checkIfUsernameIsTaken(String username);
-    void onUserAlreadyExists();
+    void onUserAlreadyExists(String message);
     void onUserDoesNotExist();
 }

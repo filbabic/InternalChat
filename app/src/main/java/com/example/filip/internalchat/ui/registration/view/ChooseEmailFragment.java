@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
+import com.example.filip.internalchat.ui.registration.presenter.FirebaseUserRegisterPresenter;
 import com.example.filip.internalchat.ui.registration.presenter.FirebaseUserRegisterPresenterImpl;
 
 /**
@@ -22,7 +24,7 @@ public class ChooseEmailFragment extends Fragment implements View.OnClickListene
     private EditText mEmailEditText;
     private EditText mPasswordEditText;
     private Button mRegisterButton;
-    private FirebaseUserRegisterPresenterImpl presenter;
+    private FirebaseUserRegisterPresenter presenter;
 
     public static ChooseEmailFragment newInstance(Bundle data) {
         ChooseEmailFragment f = new ChooseEmailFragment();
@@ -59,28 +61,28 @@ public class ChooseEmailFragment extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Bundle data = this.getArguments();
-        presenter.receiveRegisterRequest(data.getString("username"), mEmailEditText.getText().toString(), mPasswordEditText.getText().toString(), data.getString("emoji"));
+        presenter.receiveRegisterRequest(data.getString(StringConstants.USERNAME_BUNDLE_KEY), mEmailEditText.getText().toString(), mPasswordEditText.getText().toString(), data.getString(StringConstants.EMOJI_BUNDLE_KEY));
     }
 
 
     @Override
     public void onSuccess() {
-        Toast.makeText(getActivity(), R.string.register_success, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.register_success_message, Toast.LENGTH_SHORT).show();
         getActivity().finish();
     }
 
     @Override
     public void onFailure() {
-        Toast.makeText(getActivity(), R.string.register_failure, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.register_failure_error_message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void spinProgressBar() {
+    public void showProgressBar() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void stopProgressBar() {
+    public void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
     }
 }

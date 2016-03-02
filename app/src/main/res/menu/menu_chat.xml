@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:icon="@drawable/ic_list_black_24dp"
+        android:icon="@drawable/ic_format_list_bulleted_black_24dp"
         android:orderInCategory="100"
-        android:title="@string/online_users"
+        android:title="@string/online_users_menu_item"
         app:showAsAction="always" />
 
 </menu>

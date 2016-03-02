@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
 import com.example.filip.internalchat.ui.adapter.registration.EmojiRecyclerAdapter;
 import com.example.filip.internalchat.ui.adapter.registration.OnEmojiClickListener;
 
@@ -67,13 +67,13 @@ public class ChooseAnEmojiFragment extends Fragment implements OnEmojiClickListe
     private void showDialog(final String emoji) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("You chose: " + emoji + " , continue?");
-        builder.setPositiveButton("Yeah!", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getActivity().getString(R.string.fragment_dialog_positive_button), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 continueToEmail(emoji);
             }
         });
-        builder.setNegativeButton("Go back!", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getActivity().getString(R.string.fragment_dialog_negative_button), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -86,8 +86,13 @@ public class ChooseAnEmojiFragment extends Fragment implements OnEmojiClickListe
 
     private void continueToEmail(String emoji) {
         Bundle data = this.getArguments();
-        data.putString("emoji", emoji);
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.register_activity_frame_layout, ChooseEmailFragment.newInstance(data), "email").addToBackStack("email").commit();
+        data.putString(StringConstants.EMOJI_BUNDLE_KEY, emoji);
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.register_activity_frame_layout, ChooseEmailFragment.newInstance(data), StringConstants.EMAIL_BUNDLE_KEY)
+                .addToBackStack(StringConstants.EMAIL_BUNDLE_KEY)
+                .commit();
     }
 }

@@ -1,6 +1,12 @@
 package com.example.filip.internalchat.ui.adapter.users;
 
+import com.example.filip.internalchat.api.DataManager;
+import com.example.filip.internalchat.api.DataManagerImpl;
+import com.example.filip.internalchat.api.DatabaseHelperImpl;
+import com.example.filip.internalchat.api.NetworkingHelperImpl;
+import com.example.filip.internalchat.api.ResponseListener;
 import com.example.filip.internalchat.model.User;
+import com.firebase.client.DataSnapshot;
 
 import java.util.ArrayList;
 
@@ -9,22 +15,31 @@ import java.util.ArrayList;
  */
 public class CurrentUsersPresenterImpl implements CurrentUsersPresenter {
     private final CurrentAdapterView adapterView;
-    private final CurrentUsersInteractor interactor;
+    private final DataManager dataManager;
 
 
     public CurrentUsersPresenterImpl(CurrentAdapterView view) {
         this.adapterView = view;
-        this.interactor = new CurrentUsersInteractor(this);
+        this.dataManager = new DataManagerImpl(new NetworkingHelperImpl(), new DatabaseHelperImpl());
     }
 
     @Override
-    public void getChildren(ArrayList<User> users) {
-        adapterView.addAll(users);
+    public void sendChildrenToAdapter(ArrayList<User> users) {
+        adapterView.addAllOnlineUsersToAdapter(users);
     }
 
     @Override
-    public void request() {
-        interactor.request();
-    }
+    public void requestCurrentUsersFromFirebase() {
+        dataManager.requestListOfCurrentlyActiveUsers(new ResponseListener<DataSnapshot>() {
+            @Override
+            public void onSuccess(DataSnapshot callback) {
+                sendChildrenToAdapter(dataManager.createListOfCurrentlyLoggedInUsers(callback));
+            }
 
+            @Override
+            public void onError(Throwable t) {
+                //handle error
+            }
+        });
+    }
 }

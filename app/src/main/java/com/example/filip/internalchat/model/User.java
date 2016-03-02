@@ -1,16 +1,20 @@
 package com.example.filip.internalchat.model;
 
-import java.io.Serializable;
-
 /**
  * Created by Filip on 23/02/2016.
  */
-public class User implements Serializable {
+public class User {
     private String username;
     private String uid;
     private String emoji;
 
     public User() {
+    }
+
+    public User(String username, String emoji, String uid) {
+        this.username = username;
+        this.uid = uid;
+        this.emoji = emoji;
     }
 
     public String getUsername() {

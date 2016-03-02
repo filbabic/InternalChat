@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.filip.internalchat.R;
 import com.example.filip.internalchat.ui.main.presenter.MainActivityPresenterImpl;
 import com.example.filip.internalchat.ui.login.view.LoginActivity;
+import com.example.filip.internalchat.ui.main.presenter.MainPresenter;
 import com.example.filip.internalchat.ui.registration.view.RegisterActivity;
 import com.firebase.client.Firebase;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mOnlineUsers;
     private Button mLoginButton;
     private Button mRegisterButton;
-    private MainActivityPresenterImpl presenter;
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStart() {
         super.onStart();
         presenter = new MainActivityPresenterImpl(this);
-        presenter.receiveRequest();
+        presenter.receiveRequestForNumberOfLoggedInUsers();
     }
 
     private void setUI() {

@@ -4,5 +4,5 @@
     <color name="salmon">#ff6e6e</color>
     <color name="black">#000000</color>
     <color name="chat">#FFCCCC</color>
-    <color name="dgray">#444444</color>
+    <color name="darkGray">#444444</color>
 </resources>

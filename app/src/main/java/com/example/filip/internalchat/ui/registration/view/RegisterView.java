@@ -8,7 +8,7 @@ public interface RegisterView {
 
     void onFailure();
 
-    void spinProgressBar();
+    void showProgressBar();
 
-    void stopProgressBar();
+    void hideProgressBar();
 }

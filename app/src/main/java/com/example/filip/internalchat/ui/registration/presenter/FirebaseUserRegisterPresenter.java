@@ -6,7 +6,7 @@ package com.example.filip.internalchat.ui.registration.presenter;
 public interface FirebaseUserRegisterPresenter {
     void receiveRegisterRequest(String username, String email, String password, String emoji);
 
-    void onFailure();
+    void userFailedToRegister();
 
-    void onSuccess();
+    void userSuccessfullyRegistered();
 }

@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.ui.login.presenter.FirebaseLoginPresenter;
 import com.example.filip.internalchat.ui.login.presenter.FirebaseLoginPresenterImpl;
 import com.example.filip.internalchat.ui.chat.view.ChatScreenActivity;
 import com.firebase.client.Firebase;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     private EditText mEmailEditText;
     private EditText mPasswordEditText;
     private Button mLoginButton;
-    private FirebaseLoginPresenterImpl presenter;
+    private FirebaseLoginPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public void onFailure() {
-        Toast.makeText(LoginActivity.this, R.string.on_failure_message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, R.string.login_request_failure, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -68,6 +69,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public void onClick(View v) {
-        presenter.receiveUserLogin(mEmailEditText.getText().toString(), mPasswordEditText.getText().toString());
+        presenter.receiveUserLoginRequest(mEmailEditText.getText().toString(), mPasswordEditText.getText().toString());
     }
 }

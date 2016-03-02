@@ -13,7 +13,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
 import com.example.filip.internalchat.ui.adapter.chat.CustomMessageRecyclerAdapter;
+import com.example.filip.internalchat.ui.chat.presenter.FirebaseChatMessagePresenter;
 import com.example.filip.internalchat.ui.chat.presenter.FirebaseChatMessagePresenterImpl;
 
 /**
@@ -24,7 +26,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener {
     private EditText mEnterMessageEditText;
     private ImageButton mSendMessageButton;
     private CustomMessageRecyclerAdapter adapter;
-    private FirebaseChatMessagePresenterImpl presenter;
+    private FirebaseChatMessagePresenter presenter;
 
     @Nullable
     @Override
@@ -42,33 +44,39 @@ public class ChatFragment extends Fragment implements View.OnClickListener {
     public void onStart() {
         super.onStart();
         fillUI();
+        initPresenter();
     }
 
     @Override
     public void onClick(View v) {
-        handleMessageClick();
+        if (v == mSendMessageButton)
+            handleMessageClick();
     }
 
     private void createUI(View view) {
         mMessagesListView = (RecyclerView) view.findViewById(R.id.chat_recycler_view);
+        mMessagesListView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mMessagesListView.setHasFixedSize(true);
+        mMessagesListView.setItemAnimator(new DefaultItemAnimator());
+
         mEnterMessageEditText = (EditText) view.findViewById(R.id.chat_edit_text);
         mSendMessageButton = (ImageButton) view.findViewById(R.id.chat_send_button);
         mSendMessageButton.setOnClickListener(this);
     }
 
     private void fillUI() {
-        adapter = new CustomMessageRecyclerAdapter(getActivity().getIntent().getStringExtra("username"));
-        adapter.request();
-        mMessagesListView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mMessagesListView.setHasFixedSize(true);
-        mMessagesListView.setItemAnimator(new DefaultItemAnimator());
+        adapter = new CustomMessageRecyclerAdapter(getActivity().getIntent().getStringExtra(StringConstants.USERNAME_BUNDLE_KEY));
+        adapter.requestMessagesFromFirebase();
         mMessagesListView.setAdapter(adapter);
+    }
+
+    private void initPresenter() {
         presenter = new FirebaseChatMessagePresenterImpl();
     }
 
     private void handleMessageClick() {
-        presenter.sendMessage(getActivity().getIntent().getStringExtra("username"), mEnterMessageEditText.getText().toString(), getActivity().getIntent().getStringExtra("emoji"));
+        presenter.sendMessage(getActivity().getIntent().getStringExtra(StringConstants.USERNAME_BUNDLE_KEY), mEnterMessageEditText.getText().toString(), getActivity().getIntent().getStringExtra(StringConstants.EMOJI_BUNDLE_KEY));
         mEnterMessageEditText.setText("");
-        mMessagesListView.scrollToPosition(mMessagesListView.getBottom());
+        // mMessagesListView.scrollToPosition(mMessagesListView.getBottom());
     }
 }

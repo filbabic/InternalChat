@@ -1,5 +1,9 @@
 package com.example.filip.internalchat.ui.adapter.chat;
 
+import com.example.filip.internalchat.api.DataManagerImpl;
+import com.example.filip.internalchat.api.DatabaseHelperImpl;
+import com.example.filip.internalchat.api.NetworkingHelperImpl;
+import com.example.filip.internalchat.api.ResponseListener;
 import com.example.filip.internalchat.model.Message;
 
 /**
@@ -7,20 +11,25 @@ import com.example.filip.internalchat.model.Message;
  */
 public class MessagePresenterImpl implements MessagePresenter {
     private final MessageAdapterView adapterView;
-    private final MessageInteractor interactor;
+    private final DataManagerImpl dataManager;
 
     public MessagePresenterImpl(MessageAdapterView view) {
         this.adapterView = view;
-        this.interactor = new MessageInteractor(this);
+        this.dataManager = new DataManagerImpl(new NetworkingHelperImpl(), new DatabaseHelperImpl());
     }
 
     @Override
-    public void sendMessageToAdapter(Message message) {
-        adapterView.addItem(message);
-    }
+    public void requestMessagesFromFirebase() {
+        dataManager.requestMessages(new ResponseListener<Message>() {
+            @Override
+            public void onSuccess(Message callback) {
+                adapterView.addMessageToAdapter(callback);
+            }
 
-    @Override
-    public void requestMessages() {
-        interactor.request();
+            @Override
+            public void onError(Throwable t) {
+                //handle error
+            }
+        });
     }
 }

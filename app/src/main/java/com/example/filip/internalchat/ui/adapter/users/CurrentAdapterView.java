@@ -8,6 +8,6 @@ import java.util.ArrayList;
  * Created by Filip on 25/02/2016.
  */
 public interface CurrentAdapterView {
-    void addAll(ArrayList<User> users);
-    void request();
+    void addAllOnlineUsersToAdapter(ArrayList<User> users);
+    void requestCurrentUsersFromFirebase();
 }

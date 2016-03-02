@@ -3,7 +3,6 @@ package com.example.filip.internalchat.ui.registration.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
+import com.example.filip.internalchat.ui.registration.presenter.UsernamePresenter;
 import com.example.filip.internalchat.ui.registration.presenter.UsernamePresenterImpl;
 
 /**
@@ -21,7 +22,7 @@ import com.example.filip.internalchat.ui.registration.presenter.UsernamePresente
 public class ChooseUsernameFragment extends Fragment implements View.OnClickListener, UsernameFragmentView {
     private EditText mUsernameEditText;
     private Button mContinueButton;
-    private UsernamePresenterImpl presenter;
+    private UsernamePresenter presenter;
 
     @Nullable
     @Override
@@ -55,13 +56,18 @@ public class ChooseUsernameFragment extends Fragment implements View.OnClickList
     @Override
     public void onSuccess() {
         Bundle data = new Bundle();
-        data.putString("username", mUsernameEditText.getText().toString());
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.register_activity_frame_layout, ChooseAnEmojiFragment.newInstance(data), "emoji").addToBackStack("emoji").commit();
+        data.putString(StringConstants.USERNAME_BUNDLE_KEY, mUsernameEditText.getText().toString());
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(R.id.register_activity_frame_layout, ChooseAnEmojiFragment.newInstance(data), StringConstants.EMOJI_BUNDLE_KEY)
+                .addToBackStack(StringConstants.EMOJI_BUNDLE_KEY)
+                .commit();
     }
 
     @Override
-    public void onFailure() {
-        Toast.makeText(getActivity(), R.string.username_taken, Toast.LENGTH_SHORT).show();
+    public void onFailure(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

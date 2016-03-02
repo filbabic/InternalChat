@@ -47,7 +47,7 @@ public class ListOfUsersFragment extends Fragment {
 
     private void fillUI() {
         adapter = new CustomUsersAdapter();
-        adapter.request();
+        adapter.requestCurrentUsersFromFirebase();
         mListOfOnlineUsers.setAdapter(adapter);
     }
 }

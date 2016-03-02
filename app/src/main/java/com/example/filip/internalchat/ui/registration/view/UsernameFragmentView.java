@@ -6,5 +6,5 @@ package com.example.filip.internalchat.ui.registration.view;
 public interface UsernameFragmentView {
     void onSuccess();
 
-    void onFailure();
+    void onFailure(String message);
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 // Shows current online users in a list(by username)
 public class CustomUsersAdapter extends RecyclerView.Adapter<CustomUsersAdapter.ViewHolder> implements CurrentAdapterView {
     private final ArrayList<User> mUserList = new ArrayList<>();
-    private final CurrentUsersPresenterImpl presenter;
+    private final CurrentUsersPresenter presenter;
 
     public CustomUsersAdapter() {
         this.presenter = new CurrentUsersPresenterImpl(this);
@@ -42,15 +42,15 @@ public class CustomUsersAdapter extends RecyclerView.Adapter<CustomUsersAdapter.
     }
 
     @Override
-    public void addAll(ArrayList<User> users) {
+    public void addAllOnlineUsersToAdapter(ArrayList<User> users) {
         mUserList.clear();
         mUserList.addAll(users);
         notifyDataSetChanged();
     }
 
     @Override
-    public void request() {
-        presenter.request();
+    public void requestCurrentUsersFromFirebase() {
+        presenter.requestCurrentUsersFromFirebase();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

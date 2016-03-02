@@ -1,10 +1,11 @@
 package com.example.filip.internalchat.ui.registration.view;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
 import com.firebase.client.Firebase;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -23,7 +24,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void addStartFragment() {
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.register_activity_frame_layout, new ChooseUsernameFragment(), "username").commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .add(R.id.register_activity_frame_layout, new ChooseUsernameFragment(), StringConstants.USERNAME_BUNDLE_KEY)
+                .commit();
     }
 }

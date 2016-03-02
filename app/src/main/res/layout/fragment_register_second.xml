@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/salmon">
+    android:orientation="vertical">
 
     <TextView
         android:id="@id/choose_an_emoji_text_view"
@@ -11,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10sp"
-        android:text="@string/choose_an_emoji_to_represent_your_avatar"
+        android:text="@string/choose_an_emoji_to_represent_your_avatar_text_view"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

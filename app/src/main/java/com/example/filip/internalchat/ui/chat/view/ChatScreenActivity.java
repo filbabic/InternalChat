@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.filip.internalchat.R;
+import com.example.filip.internalchat.api.StringConstants;
+import com.example.filip.internalchat.ui.chat.presenter.FirebaseChatLoginPresenter;
 import com.example.filip.internalchat.ui.chat.presenter.FirebaseChatLoginPresenterImpl;
 import com.firebase.client.Firebase;
 
@@ -18,23 +20,23 @@ import com.firebase.client.Firebase;
  * Created by Filip on 23/02/2016.
  */
 public class ChatScreenActivity extends AppCompatActivity {
-    private FirebaseChatLoginPresenterImpl presenter;
+    private FirebaseChatLoginPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_service);
         Firebase.setAndroidContext(this);
-        Toast.makeText(ChatScreenActivity.this, "Welcome, " + getIntent().getStringExtra("username") + "!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChatScreenActivity.this, "Welcome, " + getIntent().getStringExtra(StringConstants.USERNAME_BUNDLE_KEY) + "!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.chat_activity_frame_layout, new ChatFragment(), "chat");
-        transaction.commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.chat_activity_frame_layout, new ChatFragment(), StringConstants.CHAT_FRAGMENT_KEY)
+                .commit();
         presenter = new FirebaseChatLoginPresenterImpl();
     }
 
@@ -49,7 +51,7 @@ public class ChatScreenActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         FragmentManager manager = getSupportFragmentManager();
         if (manager.getBackStackEntryCount() == 0) {
-            manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.chat_activity_frame_layout, new ListOfUsersFragment(), "list").addToBackStack("list").commit();
+            manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.chat_activity_frame_layout, new ListOfUsersFragment(), StringConstants.LIST_FRAGMENT_KEY).addToBackStack(StringConstants.LIST_FRAGMENT_KEY).commit();
         } else if (manager.getBackStackEntryCount() != 0) {
             manager.popBackStack();
         }
@@ -59,6 +61,6 @@ public class ChatScreenActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.removeUserFromCurrentUsers(getIntent().getStringExtra("uid"));
+        presenter.removeUserFromCurrentUsers(getIntent().getStringExtra(StringConstants.UID));
     }
 }

@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:hint="@string/enter_a_message"
+            android:hint="@string/enter_a_message_hint"
             android:inputType="textShortMessage"
             android:lines="1"
             android:singleLine="true"
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="false"
             android:background="@color/chat"
-            android:src="@android:drawable/ic_menu_send"
+            android:src="@drawable/ic_send_white_24dp"
             tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>
